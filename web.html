@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Projects | Muhammad Reza</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-bracket">&lt;</span>MR<span class="logo-bracket">/&gt;</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#projects" class="nav-link active">Projects</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="projects" style="padding-top: 150px; min-height: calc(100vh - 120px);">
+        <div class="projects-container">
+            <div class="section-header">
+                <span class="section-tag">Portfolio</span>
+                <h2 class="section-title">Web <span class="text-gradient" style="background: linear-gradient(135deg, var(--cyan), #67e8f9); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Development</span></h2>
+                <p class="section-subtitle">A gallery of my responsive, interactive websites built with modern web technologies.</p>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Example Project Card (User can copy this to add more) -->
+                <div class="project-card glass-card reveal" id="project-web">
+                    <div class="card-glow card-glow-cyan"></div>
+                    <div class="project-icon-wrapper cyan-gradient">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="2" y1="12" x2="22" y2="12"/>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                    </div>
+                    <h3 class="project-title">Gym Website</h3>
+                    <p class="project-description">A fully responsive, interactive website for a fitness center.</p>
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                    </div>
+                    <a href="#" class="project-cta">
+                        <span>View Project</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                        </svg>
+                    </a>
+                </div>
+                
+                <!-- Placeholder for new projects
+                <div class="project-card glass-card reveal" style="border: 2px dashed rgba(255,255,255,0.2); background: transparent; display: flex; align-items: center; justify-content: center; text-align: center; min-height: 350px;">
+                    <div>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 40px; height: 40px; color: var(--smoke); margin-bottom: 16px;">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        <h3 style="color: var(--smoke-light);">Add New Project</h3>
+                        <p style="color: var(--smoke); font-size: 0.85rem; margin-top: 8px;">Copy the card structure above</p>
+                    </div>
+                </div> -->
+            </div>
+            
+            <div style="text-align: center; margin-top: 60px;">
+                <a href="index.html#projects" class="btn btn-primary" style="background: rgba(255,255,255,0.1); box-shadow: none; border: 1px solid rgba(255,255,255,0.2); color: var(--white);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="transform: rotate(180deg); margin-right: 8px;">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                    <span>Back to Projects</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <span class="logo-bracket">&lt;</span>MR<span class="logo-bracket">/&gt;</span>
+            </div>
+            <p class="footer-text">Designed & Built by Muhammad Reza</p>
+            <p class="footer-copy">&copy; 2026 All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
