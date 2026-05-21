@@ -640,49 +640,55 @@ body {
     margin-right: var(--logoloop-gap);
 }
 
-.logoloop-skill {
-    display: inline-flex;
+.logoloop-logo {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 7px 18px;
-    border-radius: 100px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    white-space: nowrap;
+    gap: 8px;
+    padding: 12px 20px;
+    border-radius: 14px;
+    background: var(--glass-bg);
+    border: 1px solid var(--border);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-                box-shadow 0.3s ease;
+                border-color 0.3s ease,
+                background 0.3s ease;
     cursor: default;
+    min-width: 72px;
 }
 
-.logoloop__item:hover .logoloop-skill {
-    transform: scale(1.1) translateY(-2px);
+.logoloop-logo img {
+    height: 40px;
+    width: 40px;
+    object-fit: contain;
+    display: block;
+    pointer-events: none;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.logoloop-skill.purple {
-    background: rgba(139, 92, 246, 0.12);
-    border: 1px solid rgba(139, 92, 246, 0.25);
-    color: var(--purple);
-    box-shadow: 0 0 0 0 var(--purple-glow);
-}
-.logoloop__item:hover .logoloop-skill.purple {
-    box-shadow: 0 4px 16px var(--purple-glow);
+.logoloop-logo span {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    white-space: nowrap;
+    letter-spacing: 0.3px;
 }
 
-.logoloop-skill.orange {
-    background: rgba(249, 115, 22, 0.1);
-    border: 1px solid rgba(249, 115, 22, 0.25);
-    color: var(--orange);
-}
-.logoloop__item:hover .logoloop-skill.orange {
-    box-shadow: 0 4px 16px var(--orange-glow);
+.logoloop__item:hover .logoloop-logo {
+    transform: translateY(-4px) scale(1.06);
+    border-color: var(--border-hover);
+    background: var(--glass-hover);
 }
 
-.logoloop-skill.cyan {
-    background: rgba(6, 182, 212, 0.1);
-    border: 1px solid rgba(6, 182, 212, 0.25);
-    color: var(--cyan);
+.logoloop__item:hover .logoloop-logo img {
+    transform: scale(1.1);
 }
-.logoloop__item:hover .logoloop-skill.cyan {
-    box-shadow: 0 4px 16px var(--cyan-glow);
+
+.logoloop-logo--github img {
+    filter: invert(1) brightness(1.8);
+}
+
+[data-theme="light"] .logoloop-logo--github img {
+    filter: none;
 }
 
 .logoloop--fade::before,
