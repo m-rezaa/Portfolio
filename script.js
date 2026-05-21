@@ -56,21 +56,102 @@ function handleActiveNav() {
     });
 }
 
-// ===== 3D TILT ON HERO CARD =====
-function handle3DTilt() {
-    const card = document.querySelector('.card-inner');
-    const wrapper = document.querySelector('.visual-3d-card');
-    if (!card || !wrapper) return;
+// ===== PROFILE CARD TILT ENGINE =====
+function initProfileCard() {
+    const wrap = document.getElementById('profileCard');
+    if (!wrap) return;
+    const shell = wrap.querySelector('.pc-card-shell');
+    if (!shell) return;
 
-    wrapper.addEventListener('mousemove', (e) => {
-        const rect = wrapper.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        card.style.transform = `rotateY(${x * 20}deg) rotateX(${-y * 20}deg)`;
+    const clamp = (v, min = 0, max = 100) => Math.min(Math.max(v, min), max);
+    const round = (v, p = 3) => parseFloat(v.toFixed(p));
+    const adjust = (v, fMin, fMax, tMin, tMax) => round(tMin + ((tMax - tMin) * (v - fMin)) / (fMax - fMin));
+
+    let rafId = null, running = false, lastTs = 0;
+    let currentX = 0, currentY = 0, targetX = 0, targetY = 0;
+    let initialUntil = 0;
+    const DEFAULT_TAU = 0.14, INITIAL_TAU = 0.6;
+
+    function setVars(x, y) {
+        const w = shell.clientWidth || 1;
+        const h = shell.clientHeight || 1;
+        const px = clamp((100 / w) * x);
+        const py = clamp((100 / h) * y);
+        const cx = px - 50, cy = py - 50;
+        const props = {
+            '--pointer-x': `${px}%`,
+            '--pointer-y': `${py}%`,
+            '--background-x': `${adjust(px, 0, 100, 35, 65)}%`,
+            '--background-y': `${adjust(py, 0, 100, 35, 65)}%`,
+            '--pointer-from-center': `${clamp(Math.hypot(py - 50, px - 50) / 50, 0, 1)}`,
+            '--pointer-from-top': `${py / 100}`,
+            '--pointer-from-left': `${px / 100}`,
+            '--rotate-x': `${round(-(cx / 5))}deg`,
+            '--rotate-y': `${round(cy / 4)}deg`
+        };
+        for (const [k, v] of Object.entries(props)) wrap.style.setProperty(k, v);
+    }
+
+    function step(ts) {
+        if (!running) return;
+        if (lastTs === 0) lastTs = ts;
+        const dt = (ts - lastTs) / 1000;
+        lastTs = ts;
+        const tau = ts < initialUntil ? INITIAL_TAU : DEFAULT_TAU;
+        const k = 1 - Math.exp(-dt / tau);
+        currentX += (targetX - currentX) * k;
+        currentY += (targetY - currentY) * k;
+        setVars(currentX, currentY);
+        const stillFar = Math.abs(targetX - currentX) > 0.05 || Math.abs(targetY - currentY) > 0.05;
+        if (stillFar || document.hasFocus()) {
+            rafId = requestAnimationFrame(step);
+        } else {
+            running = false; lastTs = 0;
+            if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+        }
+    }
+
+    function startLoop() {
+        if (running) return;
+        running = true; lastTs = 0;
+        rafId = requestAnimationFrame(step);
+    }
+
+    function setTarget(x, y) { targetX = x; targetY = y; startLoop(); }
+    function toCenter() { setTarget(shell.clientWidth / 2, shell.clientHeight / 2); }
+
+    currentX = (shell.clientWidth || 300) - 70;
+    currentY = 60;
+    setVars(currentX, currentY);
+    toCenter();
+    initialUntil = performance.now() + 1200;
+    startLoop();
+
+    let enterTimer = null;
+    shell.addEventListener('pointerenter', e => {
+        const rect = shell.getBoundingClientRect();
+        shell.classList.add('active', 'entering');
+        if (enterTimer) clearTimeout(enterTimer);
+        enterTimer = setTimeout(() => shell.classList.remove('entering'), 180);
+        setTarget(e.clientX - rect.left, e.clientY - rect.top);
+    });
+    shell.addEventListener('pointermove', e => {
+        const rect = shell.getBoundingClientRect();
+        setTarget(e.clientX - rect.left, e.clientY - rect.top);
+    });
+    shell.addEventListener('pointerleave', () => {
+        toCenter();
+        function checkSettle() {
+            if (Math.hypot(targetX - currentX, targetY - currentY) > 0.6)
+                requestAnimationFrame(checkSettle);
+            else shell.classList.remove('active');
+        }
+        requestAnimationFrame(checkSettle);
     });
 
-    wrapper.addEventListener('mouseleave', () => {
-        card.style.transform = 'rotateY(0deg) rotateX(0deg)';
+    const btn = wrap.querySelector('.pc-contact-btn');
+    if (btn) btn.addEventListener('click', () => {
+        document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
     });
 }
 
@@ -176,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
     handleThemeToggle();
     handleNavScroll();
     handleActiveNav();
-    handle3DTilt();
+    initProfileCard();
     handleSmoothScroll();
     handleCardGlow();
     handleButtonRipple();
