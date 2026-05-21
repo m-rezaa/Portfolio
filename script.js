@@ -140,11 +140,25 @@ function handleCountUp() {
     stats.forEach(el => observer.observe(el));
 }
 
-// ===== LOGO LOOP HOVER PAUSE =====
+// ===== LOGO LOOP (100px/s + hover pause) =====
 function handleLogoLoop() {
     const track = document.getElementById('skills-logoloop-track');
     const container = track?.closest('.logoloop');
     if (!track || !container) return;
+
+    function setSpeed() {
+        const firstList = track.querySelector('.logoloop__list');
+        if (!firstList) return;
+        const listWidth = firstList.getBoundingClientRect().width;
+        if (listWidth > 0) {
+            const duration = listWidth / 100;
+            track.style.animationDuration = duration + 's';
+        }
+    }
+
+    setSpeed();
+    window.addEventListener('resize', setSpeed);
+
     container.addEventListener('mouseenter', () => track.classList.add('paused'));
     container.addEventListener('mouseleave', () => track.classList.remove('paused'));
 }
