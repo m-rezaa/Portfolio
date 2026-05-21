@@ -605,7 +605,7 @@ body {
     overflow: hidden;
     width: 100%;
     --logoloop-gap: 90px;
-    --logoloop-fade-color: #1a191a;
+    --logoloop-fade-color: #151415;
 }
 
 [data-theme="light"] .logoloop {
