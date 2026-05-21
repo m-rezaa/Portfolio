@@ -140,6 +140,15 @@ function handleCountUp() {
     stats.forEach(el => observer.observe(el));
 }
 
+// ===== LOGO LOOP HOVER PAUSE =====
+function handleLogoLoop() {
+    const track = document.getElementById('skills-logoloop-track');
+    const container = track?.closest('.logoloop');
+    if (!track || !container) return;
+    container.addEventListener('mouseenter', () => track.classList.add('paused'));
+    container.addEventListener('mouseleave', () => track.classList.remove('paused'));
+}
+
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
     AOS.init({
@@ -158,4 +167,5 @@ document.addEventListener('DOMContentLoaded', () => {
     handleCardGlow();
     handleButtonRipple();
     handleCountUp();
+    handleLogoLoop();
 });

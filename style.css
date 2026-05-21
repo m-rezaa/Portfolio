@@ -569,12 +569,16 @@ body {
 
 /* Skills Strip */
 .skills-strip {
-    display: flex; align-items: center; gap: 20px;
-    flex-wrap: wrap;
+    display: flex; flex-direction: column; gap: 20px;
     padding: 24px 32px;
     border-radius: 16px;
     background: var(--glass-bg);
     border: 1px solid var(--border);
+}
+
+.skills-strip-top {
+    display: flex; align-items: center; gap: 20px;
+    flex-wrap: wrap;
 }
 
 .skills-label {
@@ -587,6 +591,127 @@ body {
 
 .skills-list {
     display: flex; flex-wrap: wrap; gap: 10px;
+}
+
+/* ===== LOGO LOOP ===== */
+.skills-logo-loop {
+    width: 100%;
+    margin-top: 4px;
+}
+
+.logoloop {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    --logoloop-gap: 16px;
+    --logoloop-fade-color: #0a0a0a;
+}
+
+[data-theme="light"] .logoloop {
+    --logoloop-fade-color: #ffffff;
+}
+
+.logoloop__track {
+    display: flex;
+    width: max-content;
+    will-change: transform;
+    user-select: none;
+    animation: logoloop-scroll 22s linear infinite;
+}
+
+.logoloop__track.paused {
+    animation-play-state: paused;
+}
+
+.logoloop__list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.logoloop__item {
+    flex: 0 0 auto;
+    margin-right: var(--logoloop-gap);
+}
+
+.logoloop__item:last-child {
+    margin-right: var(--logoloop-gap);
+}
+
+.logoloop-skill {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 18px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s ease;
+    cursor: default;
+}
+
+.logoloop__item:hover .logoloop-skill {
+    transform: scale(1.1) translateY(-2px);
+}
+
+.logoloop-skill.purple {
+    background: rgba(139, 92, 246, 0.12);
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    color: var(--purple);
+    box-shadow: 0 0 0 0 var(--purple-glow);
+}
+.logoloop__item:hover .logoloop-skill.purple {
+    box-shadow: 0 4px 16px var(--purple-glow);
+}
+
+.logoloop-skill.orange {
+    background: rgba(249, 115, 22, 0.1);
+    border: 1px solid rgba(249, 115, 22, 0.25);
+    color: var(--orange);
+}
+.logoloop__item:hover .logoloop-skill.orange {
+    box-shadow: 0 4px 16px var(--orange-glow);
+}
+
+.logoloop-skill.cyan {
+    background: rgba(6, 182, 212, 0.1);
+    border: 1px solid rgba(6, 182, 212, 0.25);
+    color: var(--cyan);
+}
+.logoloop__item:hover .logoloop-skill.cyan {
+    box-shadow: 0 4px 16px var(--cyan-glow);
+}
+
+.logoloop--fade::before,
+.logoloop--fade::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: clamp(24px, 8%, 80px);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.logoloop--fade::before {
+    left: 0;
+    background: linear-gradient(to right, var(--logoloop-fade-color) 0%, transparent 100%);
+}
+
+.logoloop--fade::after {
+    right: 0;
+    background: linear-gradient(to left, var(--logoloop-fade-color) 0%, transparent 100%);
+}
+
+@keyframes logoloop-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .logoloop__track { animation: none !important; }
 }
 
 .skill-badge {
