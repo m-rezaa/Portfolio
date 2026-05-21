@@ -151,7 +151,7 @@ function handleLogoLoop() {
         if (!firstList) return;
         const listWidth = firstList.getBoundingClientRect().width;
         if (listWidth > 0) {
-            const duration = listWidth / 100;
+            const duration = listWidth / 80;
             track.style.animationDuration = duration + 's';
         }
     }
