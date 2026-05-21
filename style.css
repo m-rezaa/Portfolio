@@ -1034,13 +1034,19 @@ body {
 
 /* ===== TEXT TYPE ===== */
 .text-type-heading {
-    min-height: 1.2em;
+    height: 2.3em;
     line-height: 1.1;
-    white-space: nowrap;
+    white-space: normal;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    align-content: flex-start;
 }
 
 .text-type__content {
     display: inline;
+    word-break: break-word;
     background: linear-gradient(135deg, #ffffff 0%, var(--purple) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -1054,6 +1060,7 @@ body {
     font-weight: 300;
     animation: cursorBlink 0.9s ease-in-out infinite;
     -webkit-text-fill-color: var(--purple);
+    flex-shrink: 0;
 }
 
 @keyframes cursorBlink {
@@ -1062,11 +1069,11 @@ body {
 }
 
 @media (max-width: 768px) {
-    .text-type-heading { min-height: 2.4em; white-space: normal; }
+    .text-type-heading { height: 2.5em; }
 }
 
 @media (max-width: 480px) {
-    .text-type-heading { min-height: 2.8em; white-space: normal; }
+    .text-type-heading { height: 3em; }
 }
 
 /* ===== PROFILE CARD ===== */
