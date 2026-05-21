@@ -202,8 +202,8 @@ body {
 
 .hero-content {
     margin-left: 0;
-    margin-right: 0;
-    padding-right: 48px;
+    padding-right: 10px;
+    margin-right: 80px;
 }
 
 /* Hero Badge */
