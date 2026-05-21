@@ -1,6 +1,7 @@
 // ===== PARTICLES BACKGROUND =====
 function createParticles() {
     const container = document.getElementById('particles');
+    if (!container) return;
     const count = 40;
     for (let i = 0; i < count; i++) {
         const p = document.createElement('div');
@@ -15,9 +16,26 @@ function createParticles() {
     }
 }
 
-// ===== NAVBAR SCROLL =====
+// ===== DARK MODE TOGGLE =====
+function handleThemeToggle() {
+    const btn = document.getElementById('themeToggle');
+    if (!btn) return;
+
+    const saved = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', saved);
+
+    btn.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+    });
+}
+
+// ===== NAVBAR SCROLL (sticky + blur) =====
 function handleNavScroll() {
     const nav = document.getElementById('navbar');
+    if (!nav) return;
     window.addEventListener('scroll', () => {
         nav.classList.toggle('scrolled', window.scrollY > 50);
     });
@@ -56,22 +74,6 @@ function handle3DTilt() {
     });
 }
 
-// ===== SCROLL REVEAL =====
-function handleReveal() {
-    const reveals = document.querySelectorAll('.project-card, .section-header, .contact-card');
-    reveals.forEach(el => el.classList.add('reveal'));
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-            }
-        });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-}
-
 // ===== SMOOTH SCROLL =====
 function handleSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -83,7 +85,7 @@ function handleSmoothScroll() {
     });
 }
 
-// ===== PROJECT CARD HOVER GLOW FOLLOW =====
+// ===== PROJECT CARD GLOW FOLLOW =====
 function handleCardGlow() {
     document.querySelectorAll('.project-card').forEach(card => {
         card.addEventListener('mousemove', (e) => {
@@ -97,13 +99,63 @@ function handleCardGlow() {
     });
 }
 
+// ===== BUTTON RIPPLE EFFECT =====
+function handleButtonRipple() {
+    document.querySelectorAll('.btn, .project-cta').forEach(btn => {
+        btn.addEventListener('click', function (e) {
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            const rect = this.getBoundingClientRect();
+            ripple.style.left = (e.clientX - rect.left) + 'px';
+            ripple.style.top = (e.clientY - rect.top) + 'px';
+            this.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 600);
+        });
+    });
+}
+
+// ===== STATS COUNT UP ANIMATION =====
+function handleCountUp() {
+    const stats = document.querySelectorAll('.stat-number');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = el.textContent;
+                if (target === '∞') return;
+                let count = 0;
+                const end = parseInt(target);
+                const duration = 1000;
+                const step = duration / end;
+                const timer = setInterval(() => {
+                    count++;
+                    el.textContent = count + (target.includes('+') ? '+' : '');
+                    if (count >= end) clearInterval(timer);
+                }, step);
+                observer.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    stats.forEach(el => observer.observe(el));
+}
+
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
+    AOS.init({
+        duration: 700,
+        easing: 'ease-out-cubic',
+        once: true,
+        offset: 80
+    });
+
     createParticles();
+    handleThemeToggle();
     handleNavScroll();
     handleActiveNav();
     handle3DTilt();
-    handleReveal();
     handleSmoothScroll();
     handleCardGlow();
+    handleButtonRipple();
+    handleCountUp();
 });

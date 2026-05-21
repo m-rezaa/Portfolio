@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,10 +8,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Floating Particles Background -->
     <div class="particles" id="particles"></div>
 
     <!-- Navigation -->
@@ -22,13 +22,18 @@
             </a>
             <ul class="nav-links">
                 <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <span class="theme-icon moon">🌙</span>
+                <span class="theme-icon sun">☀️</span>
+            </button>
         </div>
     </nav>
 
-    <!-- Hero / Home Section -->
+    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-container">
             <div class="hero-content">
@@ -48,59 +53,16 @@
                     <span class="title-tag">UI/UX Designer</span>
                 </div>
 
+                <p class="hero-tagline">
+                    Hi, I'm Reza — a Frontend Developer & UI/UX Designer passionate about building <span class="tagline-highlight">modern, user-centered web experiences</span> that look great and work even better.
+                </p>
+
                 <div class="hero-university">
                     <svg class="uni-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
                         <path d="M6 12v5c3 3 9 3 12 0v-5"/>
                     </svg>
                     <span>DHA Suffa University</span>
-                </div>
-
-                <div class="hero-description">
-                    <div class="desc-card glass-card">
-                        <div class="desc-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                            </svg>
-                        </div>
-                        <p>Software Engineering student with a strong foundation in <strong>problem-solving</strong> and modern development practices.</p>
-                    </div>
-                    <div class="desc-card glass-card">
-                        <div class="desc-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="3" width="18" height="18" rx="2"/>
-                                <path d="M3 9h18M9 21V9"/>
-                            </svg>
-                        </div>
-                        <p>Skilled in <strong>UI/UX design</strong>, creating clean, user-centered interfaces using tools like Figma.</p>
-                    </div>
-                    <div class="desc-card glass-card">
-                        <div class="desc-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="16 18 22 12 16 6"/>
-                                <polyline points="8 6 2 12 8 18"/>
-                            </svg>
-                        </div>
-                        <p>Experienced in <strong>Java programming</strong> with a solid understanding of object-oriented concepts.</p>
-                    </div>
-                    <div class="desc-card glass-card">
-                        <div class="desc-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <line x1="2" y1="12" x2="22" y2="12"/>
-                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                            </svg>
-                        </div>
-                        <p>Familiar with <strong>web development</strong> basics, including HTML, CSS, and responsive design principles.</p>
-                    </div>
-                    <div class="desc-card glass-card">
-                        <div class="desc-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-                            </svg>
-                        </div>
-                        <p>Passionate about building practical, <strong>visually appealing digital solutions</strong> and continuously improving technical skills.</p>
-                    </div>
                 </div>
 
                 <div class="hero-cta">
@@ -110,6 +72,26 @@
                             <path d="M5 12h14M12 5l7 7-7 7"/>
                         </svg>
                     </a>
+                    <a href="#about" class="btn btn-secondary">
+                        <span>About Me</span>
+                    </a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">3+</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Domains</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number">∞</span>
+                        <span class="stat-label">Curiosity</span>
+                    </div>
                 </div>
             </div>
 
@@ -143,18 +125,68 @@
         </div>
     </section>
 
+    <!-- About Me Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Who I Am</span>
+                <h2 class="section-title">About <span class="text-gradient">Me</span></h2>
+                <p class="section-subtitle">A little bit about my journey, what drives me, and what I'm building toward.</p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-card glass-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="about-card-icon">🎯</div>
+                    <h3>My Goal</h3>
+                    <p>I'm working toward becoming a full-stack developer who can also design beautiful interfaces. I want to build products that are both technically solid and delightful to use — bridging the gap between engineering and design.</p>
+                </div>
+
+                <div class="about-card glass-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="about-card-icon">📚</div>
+                    <h3>What I'm Learning</h3>
+                    <p>Right now I'm deepening my skills in <strong>JavaScript</strong> and exploring <strong>React</strong> for building dynamic UIs. I'm also leveling up my Figma prototyping and learning how great design systems are built.</p>
+                </div>
+
+                <div class="about-card glass-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="about-card-icon">⚡</div>
+                    <h3>What I Love Building</h3>
+                    <p>I enjoy building things people actually use — clean landing pages, intuitive dashboards, and interactive experiences. If it looks great and solves a real problem, I'm in. I especially love when <strong>design meets functionality</strong>.</p>
+                </div>
+
+                <div class="about-card glass-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="about-card-icon">🌱</div>
+                    <h3>My Approach</h3>
+                    <p>I believe great software starts with empathy. I think about the end user first, then figure out how to build it. I'm detail-oriented, curious, and always pushing myself to write cleaner code and design more thoughtfully.</p>
+                </div>
+            </div>
+
+            <div class="skills-strip" data-aos="fade-up" data-aos-delay="200">
+                <div class="skills-label">Core Skills</div>
+                <div class="skills-list">
+                    <span class="skill-badge purple">Figma</span>
+                    <span class="skill-badge orange">Java</span>
+                    <span class="skill-badge cyan">HTML & CSS</span>
+                    <span class="skill-badge purple">UI/UX Design</span>
+                    <span class="skill-badge orange">OOP</span>
+                    <span class="skill-badge cyan">Responsive Design</span>
+                    <span class="skill-badge purple">Prototyping</span>
+                    <span class="skill-badge orange">Wireframing</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Projects Section -->
     <section class="projects" id="projects">
         <div class="projects-container">
-            <div class="section-header">
+            <div class="section-header" data-aos="fade-up">
                 <span class="section-tag">Portfolio</span>
                 <h2 class="section-title">My <span class="text-gradient">Projects</span></h2>
                 <p class="section-subtitle">A collection of my work across different domains — from polished UI/UX designs to functional applications and responsive websites.</p>
             </div>
 
             <div class="projects-grid">
-                <!-- UI/UX Project Card -->
-                <div class="project-card glass-card" id="project-uiux">
+                <div class="project-card glass-card" id="project-uiux" data-aos="fade-up" data-aos-delay="100">
                     <div class="card-glow card-glow-purple"></div>
                     <div class="project-icon-wrapper purple-gradient">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -170,7 +202,6 @@
                         <span>Prototyping</span>
                         <span>Wireframes</span>
                     </div>
-                    <!-- yahan ui/ux wala project ayega -->
                     <a href="design.html" class="project-cta" id="btn-uiux">
                         <span>UI/UX Projects</span>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -179,8 +210,7 @@
                     </a>
                 </div>
 
-                <!-- Java Project Card -->
-                <div class="project-card glass-card" id="project-java">
+                <div class="project-card glass-card" id="project-java" data-aos="fade-up" data-aos-delay="200">
                     <div class="card-glow card-glow-orange"></div>
                     <div class="project-icon-wrapper orange-gradient">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -196,7 +226,6 @@
                         <span>OOP</span>
                         <span>Backend</span>
                     </div>
-                    <!-- yahan java wala project ayega -->
                     <a href="java.html" class="project-cta" id="btn-java">
                         <span>Java Projects</span>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -205,8 +234,7 @@
                     </a>
                 </div>
 
-                <!-- Web Development Project Card -->
-                <div class="project-card glass-card" id="project-web">
+                <div class="project-card glass-card" id="project-web" data-aos="fade-up" data-aos-delay="300">
                     <div class="card-glow card-glow-cyan"></div>
                     <div class="project-icon-wrapper cyan-gradient">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -223,7 +251,6 @@
                         <span>CSS</span>
                         <span>Responsive</span>
                     </div>
-                    <!-- yahan web development wala project ayega -->
                     <a href="web.html" class="project-cta" id="btn-web">
                         <span>Web Dev Projects</span>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -238,15 +265,14 @@
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="contact-container">
-            <div class="section-header">
+            <div class="section-header" data-aos="fade-up">
                 <span class="section-tag">Let's Connect</span>
                 <h2 class="section-title">Get In <span class="text-gradient">Touch</span></h2>
                 <p class="section-subtitle">I'm currently open for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
             </div>
 
             <div class="contact-grid">
-                <!-- LinkedIn -->
-                <a href="https://www.linkedin.com/in/muhammad-reza-rawjani" target="_blank" class="contact-card glass-card">
+                <a href="https://www.linkedin.com/in/muhammad-reza-rawjani" target="_blank" class="contact-card glass-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="contact-icon linkedin">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
@@ -265,8 +291,7 @@
                     </div>
                 </a>
 
-                <!-- Gmail -->
-                <a href="mailto:rzarji00@gmail.com" class="contact-card glass-card">
+                <a href="mailto:rzarji00@gmail.com" class="contact-card glass-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="contact-icon gmail">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
@@ -284,8 +309,7 @@
                     </div>
                 </a>
 
-                <!-- GitHub -->
-                <a href="https://github.com/m-rezaa" target="_blank" class="contact-card glass-card">
+                <a href="https://github.com/m-rezaa" target="_blank" class="contact-card glass-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="contact-icon github">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
@@ -316,6 +340,7 @@
         </div>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
