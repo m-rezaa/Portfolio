@@ -197,7 +197,7 @@ body {
     padding: 0 40px;
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
-    gap: 60px; align-items: center;
+    gap: 120px; align-items: center;
 }
 
 /* Hero Badge */
