@@ -569,7 +569,7 @@ body {
 
 /* Skills Strip */
 .skills-strip {
-    display: flex; flex-direction: column; gap: 20px;
+    display: flex; flex-direction: column; gap: 36px;
     padding: 24px 32px;
     border-radius: 16px;
     background: var(--glass-bg);
