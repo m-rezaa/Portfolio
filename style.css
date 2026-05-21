@@ -1032,6 +1032,43 @@ body {
 .footer-text { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 4px; }
 .footer-copy { font-size: 0.78rem; color: var(--text-dim); }
 
+/* ===== TEXT TYPE ===== */
+.text-type-heading {
+    min-height: 1.2em;
+    line-height: 1.1;
+    white-space: nowrap;
+}
+
+.text-type__content {
+    display: inline;
+    background: linear-gradient(135deg, #ffffff 0%, var(--purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.text-type__cursor {
+    display: inline-block;
+    margin-left: 2px;
+    color: var(--purple);
+    font-weight: 300;
+    animation: cursorBlink 0.9s ease-in-out infinite;
+    -webkit-text-fill-color: var(--purple);
+}
+
+@keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+@media (max-width: 768px) {
+    .text-type-heading { min-height: 2.4em; white-space: normal; }
+}
+
+@media (max-width: 480px) {
+    .text-type-heading { min-height: 2.8em; white-space: normal; }
+}
+
 /* ===== PROFILE CARD ===== */
 .pc-card-wrapper {
   --pointer-x: 50%;

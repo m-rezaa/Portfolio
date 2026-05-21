@@ -56,6 +56,56 @@ function handleActiveNav() {
     });
 }
 
+// ===== TEXT TYPE ANIMATION =====
+function initTextType() {
+    const contentEl = document.getElementById('textTypeContent');
+    if (!contentEl) return;
+
+    const texts = [
+        'Muhammad Reza',
+        'Welcome To My Portfolio',
+        'Frontend UI/UX Dev',
+        'Software Engineer'
+    ];
+    const typingSpeed   = 75;
+    const deletingSpeed = 55;
+    const pauseDuration = 1500;
+    const loopDelay     = 200;
+
+    let currentTextIndex = 0;
+    let currentCharIndex = 0;
+    let isDeleting       = false;
+    let displayedText    = '';
+
+    function tick() {
+        const currentText = texts[currentTextIndex];
+
+        if (!isDeleting) {
+            if (currentCharIndex < currentText.length) {
+                displayedText = currentText.slice(0, currentCharIndex + 1);
+                contentEl.textContent = displayedText;
+                currentCharIndex++;
+                setTimeout(tick, typingSpeed);
+            } else {
+                setTimeout(() => { isDeleting = true; tick(); }, pauseDuration);
+            }
+        } else {
+            if (displayedText.length > 0) {
+                displayedText = displayedText.slice(0, -1);
+                contentEl.textContent = displayedText;
+                setTimeout(tick, deletingSpeed);
+            } else {
+                isDeleting = false;
+                currentTextIndex = (currentTextIndex + 1) % texts.length;
+                currentCharIndex = 0;
+                setTimeout(tick, loopDelay);
+            }
+        }
+    }
+
+    tick();
+}
+
 // ===== PROFILE CARD TILT ENGINE =====
 function initProfileCard() {
     const wrap = document.getElementById('profileCard');
@@ -257,6 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
     handleThemeToggle();
     handleNavScroll();
     handleActiveNav();
+    initTextType();
     initProfileCard();
     handleSmoothScroll();
     handleCardGlow();
