@@ -200,6 +200,11 @@ body {
     gap: 120px; align-items: center;
 }
 
+.hero-content {
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
 /* Hero Badge */
 .hero-badge {
     display: inline-flex; align-items: center; gap: 10px;
