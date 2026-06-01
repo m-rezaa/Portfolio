@@ -1283,7 +1283,6 @@ body {
 }
 
 .pc-avatar-content {
-  mix-blend-mode: luminosity;
   overflow: visible;
   transform: translateZ(2px);
   backface-visibility: hidden;
