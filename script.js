@@ -296,12 +296,14 @@ function handleLogoLoop() {
 
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
-    AOS.init({
-        duration: 700,
-        easing: 'ease-out-cubic',
-        once: true,
-        offset: 80
-    });
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 700,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 80
+        });
+    }
 
     createParticles();
     handleThemeToggle();
