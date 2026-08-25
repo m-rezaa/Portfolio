@@ -921,6 +921,97 @@ body {
 #project-java .project-cta:hover { border-color: rgba(249, 115, 22, 0.5); box-shadow: 0 4px 20px var(--orange-glow); }
 #project-web .project-cta:hover { border-color: rgba(6, 182, 212, 0.5); box-shadow: 0 4px 20px var(--cyan-glow); }
 
+/* ===== FIGMA MODAL ===== */
+.figma-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.figma-modal.active {
+    display: flex;
+}
+
+.figma-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.figma-modal-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1000px;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+    animation: modalSlideUp 0.3s ease;
+}
+
+@keyframes modalSlideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.figma-modal-content iframe {
+    width: 100%;
+    height: 550px;
+    border: none;
+    border-radius: 8px;
+    display: block;
+}
+
+.figma-modal-close {
+    position: absolute;
+    top: -14px;
+    right: -14px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--bg-3);
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    z-index: 2;
+}
+
+.figma-modal-close svg {
+    width: 18px;
+    height: 18px;
+}
+
+.figma-modal-close:hover {
+    background: var(--orange);
+    color: #fff;
+    border-color: var(--orange);
+    transform: rotate(90deg);
+}
+
+@media (max-width: 768px) {
+    .figma-modal { padding: 16px; }
+    .figma-modal-content { padding: 12px; }
+    .figma-modal-content iframe { height: 400px; }
+    .figma-modal-close { top: -12px; right: -12px; }
+}
+
 /* ===== PINNED CARD ===== */
 .project-card.pinned {
     border-color: rgba(249, 115, 22, 0.35);

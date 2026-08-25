@@ -38,7 +38,29 @@
             </div>
 
             <div class="projects-grid">
-                <!-- Example Project Card (User can copy this to add more) -->
+                <div class="project-card glass-card reveal" id="project-wireframe">
+                    <div class="card-glow card-glow-purple"></div>
+                    <div class="project-icon-wrapper purple-gradient">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                            <path d="M3 9h18M9 21V9"/>
+                        </svg>
+                    </div>
+                    <h3 class="project-title">E-Commerce Website Wireframe</h3>
+                    <p class="project-description">A structured wireframe layout for an E-Commerce website, covering key pages and user flows designed in Figma.</p>
+                    <div class="project-tags">
+                        <span>Figma</span>
+                        <span>Wireframing</span>
+                        <span>Layout</span>
+                    </div>
+                    <button class="project-cta" id="openWireframeModal" type="button">
+                        <span>View Project</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                        </svg>
+                    </button>
+                </div>
+
                 <div class="project-card glass-card reveal" id="project-uiux">
                     <div class="card-glow card-glow-purple"></div>
                     <div class="project-icon-wrapper purple-gradient">
@@ -96,6 +118,47 @@
         </div>
     </footer>
 
+    <div class="figma-modal" id="wireframeModal">
+        <div class="figma-modal-backdrop" id="wireframeModalBackdrop"></div>
+        <div class="figma-modal-content">
+            <button class="figma-modal-close" id="closeWireframeModal" type="button" aria-label="Close">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="550" src="https://embed.figma.com/design/Q5B16hkO3NboCt89bHZnQP/CodeAlpha-UI-UX-Internship?node-id=363-1405&amp;embed-host=share&amp;page-selector=false&amp;footer=false" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var modal = document.getElementById('wireframeModal');
+            var openBtn = document.getElementById('openWireframeModal');
+            var closeBtn = document.getElementById('closeWireframeModal');
+            var backdrop = document.getElementById('wireframeModalBackdrop');
+            var iframe = modal.querySelector('iframe');
+            var iframeSrc = iframe.src;
+
+            function openModal() {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            function closeModal() {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+                iframe.src = '';
+                iframe.src = iframeSrc;
+            }
+
+            openBtn.addEventListener('click', openModal);
+            closeBtn.addEventListener('click', closeModal);
+            backdrop.addEventListener('click', closeModal);
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape') closeModal();
+            });
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
