@@ -76,12 +76,12 @@
                         <span>Prototyping</span>
                         <span>User Flows</span> 
                     </div>
-                    <button class="project-cta" id="openStoreUIModal" type="button">
+                    <a href="store-ui.html" target="_blank" class="project-cta">
                         <span>View Project</span>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M7 17L17 7M17 7H7M17 7v10"/>
                         </svg>
-                    </button>
+                    </a>
                 </div>
                 
                 <!-- Placeholder for new projects 
@@ -131,19 +131,6 @@
         </div>
     </div>
 
-    <div class="figma-modal" id="storeUIModal">
-        <div class="figma-modal-backdrop" id="storeUIModalBackdrop"></div>
-        <div class="figma-modal-content">
-            <button class="figma-modal-close" id="closeStoreUIModal" type="button" aria-label="Close">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <line x1="18" y1="6" x2="6" y2="18"/>
-                    <line x1="6" y1="6" x2="18" y2="18"/>
-                </svg>
-            </button>
-            <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="100%" height="550" src="https://embed.figma.com/proto/Q5B16hkO3NboCt89bHZnQP/CodeAlpha-UI-UX-Internship?node-id=9-8&p=f&viewport=1218%2C205%2C0.08&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=9%3A8&show-proto-sidebar=1&page-id=0%3A1&amp;embed-host=share&amp;page-selector=false&amp;footer=false&hide-ui=1" allowfullscreen sandbox="allow-same-origin allow-scripts allow-pointer-lock allow-forms allow-popups allow-popups-to-escape-sandbox"></iframe>
-        </div>
-    </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             function setupModal(modalId, openBtnId, closeBtnId, backdropId) {
@@ -172,7 +159,6 @@
             }
 
             setupModal('wireframeModal', 'openWireframeModal', 'closeWireframeModal', 'wireframeModalBackdrop');
-            setupModal('storeUIModal', 'openStoreUIModal', 'closeStoreUIModal', 'storeUIModalBackdrop');
 
             document.addEventListener('keydown', function (e) {
                 if (e.key === 'Escape') {
