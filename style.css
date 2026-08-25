@@ -254,7 +254,7 @@ body {
 
 /* Hero Titles */
 .hero-titles {
-    display: flex; align-items: center; gap: 16px;
+    display: flex; align-items: center; gap: 20px;
     margin-bottom: 24px;
     animation: fadeInUp 0.8s ease 0.3s both;
 }
