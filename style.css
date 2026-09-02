@@ -882,13 +882,23 @@ body {
     padding: 4px 14px;
     border-radius: 100px;
     font-size: 0.75rem; font-weight: 500;
-    background: rgba(173, 173, 173, 0.1);
-    border: 1px solid #b0b0b0;
-    color: #6a6a6a;
+    background: var(--glass-bg);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
     transition: all 0.2s ease;
 }
 
+[data-theme="light"] .project-tags span {
+    background: rgba(173, 173, 173, 0.1);
+    border: 1px solid #b0b0b0;
+    color: #6a6a6a;
+}
+
 .project-card:hover .project-tags span {
+    border-color: var(--border-hover);
+}
+
+[data-theme="light"] .project-card:hover .project-tags span {
     border-color: #b0b0b0;
 }
 
