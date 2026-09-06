@@ -725,6 +725,18 @@ body {
     color: var(--purple);
 }
 
+.skill-badge.blue {
+    background: rgba(139, 92, 246, 0.12);
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    color: var(--blue);
+}
+
+.skill-badge.yellow {
+    background: rgba(139, 92, 246, 0.12);
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    color: var(--yellow);
+}
+
 .skill-badge.orange {
     background: rgba(249, 115, 22, 0.1);
     border: 1px solid rgba(249, 115, 22, 0.25);
